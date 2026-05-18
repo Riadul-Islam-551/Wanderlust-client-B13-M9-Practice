@@ -8,6 +8,7 @@ import { ArrowUpRight } from "@gravity-ui/icons";
 
 const DestinationCard = ({ destination }) => {
   const {
+    _id,
     Price,
     ImageURL,
     Duration,
@@ -18,9 +19,9 @@ const DestinationCard = ({ destination }) => {
     Category,
     destination: destinationPlace,
   } = destination;
-  console.log(destination);
+  // console.log(destination);
   return (
-    <div className="hover-3d">
+    <div className="hover:scale-105 duration-250 ">
       <div className="card bg-base-100 shadow-sm rounded-xl ">
         <div className="w-full  h-50  overflow-hidden rounded-xl ">
           <Image
@@ -39,7 +40,7 @@ const DestinationCard = ({ destination }) => {
           </h2>
           <div className="flex justify-between   items-center ">
             <h1 className="font-bold text-lg ">{DestinationName}</h1>
-            <p className="text-end ">Price: $ {Price}/preson</p>
+            <p className="text-end ">Price: $ {Price}/person</p>
           </div>
 
           <p className="flex justify-start items-center gap-2 ">
@@ -48,7 +49,7 @@ const DestinationCard = ({ destination }) => {
           </p>
           {/* book now button  */}
           <div className="card-actions justify-end">
-            <Link href="#">
+            <Link href={`/destinations/${_id}`}>
               <Button variant="secondary" className="text-cyan-500">
                 Book Now
                 <ArrowUpRight></ArrowUpRight>
@@ -58,14 +59,6 @@ const DestinationCard = ({ destination }) => {
         </div>
       </div>
       {/* 8 extra div need for 3D hover effect  */}
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
     </div>
   );
 };
