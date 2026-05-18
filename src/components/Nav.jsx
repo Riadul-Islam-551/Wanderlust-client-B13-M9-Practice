@@ -17,6 +17,9 @@ const Nav = () => {
       <Link href="/booking" className="p-2">
         My Bookings
       </Link>
+      <Link href="/add-destination" className="p-2">
+        Add Destination
+      </Link>
       <Link href="/profile" className="p-2 lg:hidden">
         Profile
       </Link>
