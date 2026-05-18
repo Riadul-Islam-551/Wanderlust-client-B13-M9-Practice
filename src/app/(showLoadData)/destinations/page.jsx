@@ -1,6 +1,11 @@
+import DestinationCard from "@/components/DestinationCard";
 import React from "react";
 
-const AllDestinationPage = () => {
+const AllDestinationPage = async () => {
+  const res = await fetch("http://localhost:5000/destinations");
+  const destinationsData = await res.json();
+
+//   console.log(destinationsData);
   return (
     <div className="py-12 px-2 ">
       <div>
@@ -55,6 +60,12 @@ const AllDestinationPage = () => {
             </li>
           </ul>
         </div>
+      </div>
+      {/* show the destinations data  */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-9 px-3 ">
+        {destinationsData.map((data, ind) => (
+          <DestinationCard key={ind} destination={data}></DestinationCard>
+        ))}
       </div>
     </div>
   );

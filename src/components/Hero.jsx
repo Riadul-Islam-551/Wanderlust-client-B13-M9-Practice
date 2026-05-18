@@ -21,7 +21,7 @@ const Hero = () => {
             Explore breathtaking destinations and create unforgettable memories
             with our curated travel experiences.
           </p>
-          <Link href={"#"}>
+          <Link href={"/destinations"}>
             {" "}
             <Button>
               Explore Now <ArrowRight></ArrowRight>
