@@ -84,7 +84,7 @@ const Nav = () => {
             </Button>
           </Link>
           <Link href="/login">
-            <Button variant="ghost">Lonin</Button>
+            <Button variant="ghost">Login</Button>
           </Link>
           <Link href="/signup">
             <Button variant="ghost">Sign up</Button>
