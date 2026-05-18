@@ -26,7 +26,7 @@ export function EditDestination({ detailsData }) {
     Category,
   } = detailsData;
 
-//   console.log(detailsData);
+  //   console.log(detailsData);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -34,18 +34,18 @@ export function EditDestination({ detailsData }) {
     const editedData = Object.fromEntries(formData.entries());
     console.log(editedData);
 
-    // const res = await fetch("http://localhost:5000/destinations", {
-    //   method: "POST",
-    //   headers: {
-    //     "content-type": "application/json",
-    //   },
-    //   body: JSON.stringify(destinationData),
-    // });
+    const res = await fetch(`http://localhost:5000/destinations/${_id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(editedData),
+    });
 
-    // const data = await res.json();
-    // alert("Add Destination successfully")
+    const data = await res.json();
+    alert("Updated Destination successfully");
 
-    // console.log(data);
+    console.log(data);
   };
 
   return (
@@ -58,7 +58,9 @@ export function EditDestination({ detailsData }) {
           <Modal.Dialog className="sm:max-w-5xl">
             <Modal.CloseTrigger />
             <Modal.Header>
-              <Modal.Heading className="text-cyan-500">Edit Destination</Modal.Heading>
+              <Modal.Heading className="text-cyan-500">
+                Edit Destination
+              </Modal.Heading>
             </Modal.Header>
             <Modal.Body className="p-6 ">
               <Surface variant="default">
@@ -196,7 +198,16 @@ export function EditDestination({ detailsData }) {
                   </div>
 
                   <Modal.Footer className="mt-5 ">
-                    <Button type="submit" variant="outline" className={'border-2  border-cyan-500 rounded text-cyan-500'} slot="close">Save</Button>
+                    <Button
+                      type="submit"
+                      variant="outline"
+                      className={
+                        "border-2  border-cyan-500 rounded text-cyan-500"
+                      }
+                      slot="close"
+                    >
+                      Save
+                    </Button>
                   </Modal.Footer>
                 </Form>
               </Surface>
