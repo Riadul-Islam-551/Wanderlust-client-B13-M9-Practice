@@ -32,7 +32,7 @@ export function EditDestination({ detailsData }) {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const editedData = Object.fromEntries(formData.entries());
-    console.log(editedData);
+    // console.log(editedData);
 
     const res = await fetch(`http://localhost:5000/destinations/${_id}`, {
       method: "PATCH",
@@ -45,7 +45,7 @@ export function EditDestination({ detailsData }) {
     const data = await res.json();
     alert("Updated Destination successfully");
 
-    console.log(data);
+    // console.log(data);
   };
 
   return (

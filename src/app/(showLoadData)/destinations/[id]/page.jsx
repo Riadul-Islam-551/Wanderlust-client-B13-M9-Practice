@@ -12,13 +12,14 @@ import { Pencil } from "@gravity-ui/icons";
 import { TrashBin } from "@gravity-ui/icons";
 import Image from "next/image";
 import { EditDestination } from "@/components/EditDestination";
+import { DeleteDestination } from "@/components/DeleteDestination";
 
 const DestinationDetails = async ({ params }) => {
   const { id } = await params;
-//   console.log(id);
+  //   console.log(id);
   const res = await fetch(`http://localhost:5000/destinations/${id}`);
   const detailsData = await res.json();
-//   console.log(detailsData);
+  //   console.log(detailsData);
 
   const {
     _id,
@@ -43,11 +44,7 @@ const DestinationDetails = async ({ params }) => {
         </div>
         <div className="space-x-2">
           <EditDestination detailsData={detailsData}></EditDestination>
-          <Link href={"/destinations"}>
-            <Button variant="danger-soft" className={"rounded"}>
-              <TrashBin className="text-red-500"></TrashBin> Cancel
-            </Button>
-          </Link>
+          <DeleteDestination detailsData={detailsData}></DeleteDestination>
         </div>
       </div>
       {/* details section  */}

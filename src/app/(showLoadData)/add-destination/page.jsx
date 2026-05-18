@@ -11,6 +11,7 @@ import {
   TextArea,
   TextField,
 } from "@heroui/react";
+import { redirect } from "next/navigation";
 import React from "react";
 
 const AddDestinationPage = () => {
@@ -18,7 +19,7 @@ const AddDestinationPage = () => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const destinationData = Object.fromEntries(formData.entries());
-    console.log(destinationData);
+    // console.log(destinationData);
 
     const res = await fetch("http://localhost:5000/destinations", {
       method: "POST",
@@ -29,9 +30,10 @@ const AddDestinationPage = () => {
     });
 
     const data = await res.json();
-    alert("Add Destination successfully")
+    alert("Add Destination successfully");
 
-    console.log(data);
+    redirect("/destinations");
+    // console.log(data);
   };
 
   return (
