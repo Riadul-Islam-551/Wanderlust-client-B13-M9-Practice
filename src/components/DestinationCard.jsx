@@ -20,7 +20,7 @@ const DestinationCard = ({ destination }) => {
   } = destination;
   console.log(destination);
   return (
-    <div>
+    <div className="hover-3d">
       <div className="card bg-base-100 shadow-sm rounded-xl ">
         <div className="w-full  h-50  overflow-hidden rounded-xl ">
           <Image
@@ -57,6 +57,15 @@ const DestinationCard = ({ destination }) => {
           </div>
         </div>
       </div>
+      {/* 8 extra div need for 3D hover effect  */}
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
   );
 };
