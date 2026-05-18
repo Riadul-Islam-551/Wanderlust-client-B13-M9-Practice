@@ -7,7 +7,7 @@ const AllDestinationPage = async () => {
 
 //   console.log(destinationsData);
   return (
-    <div className="py-12 px-2 ">
+    <div className="container mx-auto py-12 px-2 ">
       <div>
         <h1 className="font-bold text-2xl md:text-3xl lg:text-5xl mb-3">
           Explore All Destinations
