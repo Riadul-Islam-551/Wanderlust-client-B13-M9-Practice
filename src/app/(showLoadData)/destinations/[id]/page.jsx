@@ -11,13 +11,14 @@ import { Button } from "@heroui/react";
 import { Pencil } from "@gravity-ui/icons";
 import { TrashBin } from "@gravity-ui/icons";
 import Image from "next/image";
+import { EditDestination } from "@/components/EditDestination";
 
 const DestinationDetails = async ({ params }) => {
   const { id } = await params;
-  console.log(id);
+//   console.log(id);
   const res = await fetch(`http://localhost:5000/destinations/${id}`);
   const detailsData = await res.json();
-  console.log(detailsData);
+//   console.log(detailsData);
 
   const {
     _id,
@@ -29,7 +30,6 @@ const DestinationDetails = async ({ params }) => {
     DepartureDate,
     Country,
     Category,
-    destination,
   } = detailsData;
 
   return (
@@ -42,11 +42,7 @@ const DestinationDetails = async ({ params }) => {
           </Link>
         </div>
         <div className="space-x-2">
-          <Link href={"/destinations"}>
-            <Button variant="outline" className={"rounded "}>
-              <Pencil></Pencil> Edit
-            </Button>
-          </Link>
+          <EditDestination detailsData={detailsData}></EditDestination>
           <Link href={"/destinations"}>
             <Button variant="danger-soft" className={"rounded"}>
               <TrashBin className="text-red-500"></TrashBin> Cancel
@@ -56,12 +52,12 @@ const DestinationDetails = async ({ params }) => {
       </div>
       {/* details section  */}
       <div>
-        <div className="w-full  h-75 md:h-100 lg:h-125 overflow-hidden rounded-xl ">
+        <div className="w-full  h-75 md:h-100 lg:h-150  overflow-hidden rounded-xl ">
           <Image
             src={ImageURL}
             alt={DestinationName}
-            width={1300}
-            height={1300}
+            width={1080}
+            height={1080}
             className="w-full h-full object-cover  "
           ></Image>
         </div>
@@ -104,7 +100,8 @@ const DestinationDetails = async ({ params }) => {
                 to 7 days
               </p>
               <p className="flex items-center gap-1">
-                <Check className="text-cyan-500"></Check> Travel insurance included
+                <Check className="text-cyan-500"></Check> Travel insurance
+                included
               </p>
               <p className="flex items-center gap-1">
                 <Check className="text-cyan-500"></Check> 24/7 customer support
