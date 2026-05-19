@@ -13,6 +13,7 @@ import { TrashBin } from "@gravity-ui/icons";
 import Image from "next/image";
 import { EditDestination } from "@/components/EditDestination";
 import { DeleteDestination } from "@/components/DeleteDestination";
+import BookingCard from "@/components/BookingCard";
 
 const DestinationDetails = async ({ params }) => {
   const { id } = await params;
@@ -76,35 +77,8 @@ const DestinationDetails = async ({ params }) => {
             <h3 className="font-bold md:text-xl mt-5 ">Overview</h3>
             <p className="text-gray-700 text-sm text-justify">{Description}</p>
           </div>
-          <div className="card w-full lg:min-w-75 text-gray-700">
-            <p className="">
-              Starting from <br />{" "}
-              <span className="font-bold text-xl md:text-2xl text-cyan-500">
-                $ {Price}{" "}
-              </span>{" "}
-              <br />
-              per person
-            </p>
-            <div className="bg-base-300 p-2 mt-8 mb-4">{DepartureDate}</div>
-            <Link href={"#"}>
-              <Button className={"bg-cyan-500 text-white rounded-none w-full "}>
-                Book Now <ArrowRight></ArrowRight>
-              </Button>
-            </Link>
-            <div>
-              <p className="flex items-center gap-1">
-                <Check className="text-cyan-500"></Check> Free cancellation up
-                to 7 days
-              </p>
-              <p className="flex items-center gap-1">
-                <Check className="text-cyan-500"></Check> Travel insurance
-                included
-              </p>
-              <p className="flex items-center gap-1">
-                <Check className="text-cyan-500"></Check> 24/7 customer support
-              </p>
-            </div>
-          </div>
+          {/* booking card  */}
+          <BookingCard detailsData={detailsData}></BookingCard>
         </div>
       </div>
     </div>
