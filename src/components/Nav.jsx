@@ -24,7 +24,7 @@ const Nav = () => {
       <Link href="/destinations" className="p-2">
         Destinations
       </Link>
-      <Link href="/booking" className="p-2">
+      <Link href="/myBookings" className="p-2">
         My Bookings
       </Link>
       <Link href="/add-destination" className="p-2">
@@ -78,14 +78,14 @@ const Nav = () => {
           </div>
         </div>
         <div className="navbar-center">
-          <a className="btn btn-ghost text-xl">
+          <Link href="/">
             <Image
               src={"/assets/wanderlast.png"}
               alt="wander last"
               width={100}
               height={14}
             ></Image>
-          </a>
+          </Link>
         </div>
         <div className="navbar-end">
           {user ? (

@@ -81,6 +81,9 @@ const DestinationDetails = async ({ params }) => {
           <BookingCard detailsData={detailsData}></BookingCard>
         </div>
       </div>
+      <div className="py-9 ">
+        <Link href={'/myBookings'}><Button variant="outline" className={'w-full text-cyan-500 border-cyan-500 rounded '}>Show Your Booking Destinations</Button></Link>
+      </div>
     </div>
   );
 };

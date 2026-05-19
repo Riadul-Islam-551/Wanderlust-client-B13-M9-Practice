@@ -12,14 +12,13 @@ const BookingCard = ({ detailsData }) => {
   const { data: session } = authClient.useSession();
   const user = session?.user;
 
-  console.log(user);
+  // console.log(user);
   const {
     _id,
     Price,
     ImageURL,
     Duration,
     DestinationName,
-    Description,
     DepartureDate,
     Country,
     Category,
@@ -40,7 +39,7 @@ const BookingCard = ({ detailsData }) => {
       duration: Duration,
     };
 
-    console.log(bookingData);
+    // console.log(bookingData);
 
     const res = await fetch("http://localhost:5000/bookings", {
       method: "POST",
@@ -52,7 +51,7 @@ const BookingCard = ({ detailsData }) => {
 
     const data = await res.json();
     if (data.insertedId) {
-      redirect("/myBookings");
+      alert("You Booked your destination successfully");
     }
 
     console.log(data.insertedId);
