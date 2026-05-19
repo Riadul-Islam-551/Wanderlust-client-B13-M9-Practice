@@ -1,7 +1,7 @@
 // import React from "react";
 "use client";
 
-import { Avatar, Button } from "@heroui/react";
+import { Avatar, Button, Spinner } from "@heroui/react";
 import Link from "next/link";
 import { Person } from "@gravity-ui/icons";
 import Image from "next/image";
@@ -11,7 +11,7 @@ const Nav = () => {
   const { data: session } = authClient.useSession();
   const user = session?.user;
 
-  // console.log(user);
+  console.log(session);
   const handleLogOut = async () => {
     await authClient.signOut();
   };
@@ -87,8 +87,11 @@ const Nav = () => {
             ></Image>
           </Link>
         </div>
+
         <div className="navbar-end">
-          {user ? (
+          {session == undefined ? (
+            <Spinner></Spinner>
+          ) : user ? (
             <>
               <Avatar>
                 <Avatar.Image alt="John Doe" src={user?.image} />
