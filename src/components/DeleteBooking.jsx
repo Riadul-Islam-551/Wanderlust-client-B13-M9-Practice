@@ -4,7 +4,7 @@ import { TrashBin } from "@gravity-ui/icons";
 import { AlertDialog, Button } from "@heroui/react";
 
 export function DeleteBooking({ bookingId }) {
-  console.log(bookingId);
+//   console.log(bookingId);
 
   const handleDelete = async () => {
     const res = await fetch(`http://localhost:5000/bookings/${bookingId}`, {

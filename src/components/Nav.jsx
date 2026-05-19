@@ -11,7 +11,7 @@ const Nav = () => {
   const { data: session } = authClient.useSession();
   const user = session?.user;
 
-  console.log(session);
+  // console.log(session);
   const handleLogOut = async () => {
     await authClient.signOut();
   };

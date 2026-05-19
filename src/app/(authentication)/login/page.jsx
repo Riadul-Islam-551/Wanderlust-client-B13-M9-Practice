@@ -32,7 +32,7 @@ const LoginPage = () => {
       alert("something went wrong");
     }
 
-    console.log({ data, error }); 
+    // console.log({ data, error }); 
 
     // console.log(user);
   };
