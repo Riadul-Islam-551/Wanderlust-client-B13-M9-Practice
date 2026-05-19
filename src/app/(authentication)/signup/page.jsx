@@ -105,7 +105,7 @@ const SignupPage = () => {
           <div className="flex gap-2">
             <Button type="submit" className={"w-full bg-cyan-500 rounded "}>
               <Check />
-              Submit
+              Create Account
             </Button>
           </div>
         </Form>

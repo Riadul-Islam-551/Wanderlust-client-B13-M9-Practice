@@ -1,11 +1,21 @@
 // import React from "react";
+"use client";
 
-import { Button } from "@heroui/react";
+import { Avatar, Button } from "@heroui/react";
 import Link from "next/link";
 import { Person } from "@gravity-ui/icons";
 import Image from "next/image";
+import { authClient } from "@/lib/auth-client";
 
 const Nav = () => {
+  const { data: session } = authClient.useSession();
+  const user = session?.user;
+
+  // console.log(user);
+  const handleLogOut = async () => {
+    await authClient.signOut();
+  };
+
   const links = (
     <>
       <Link href="/" className="p-2">
@@ -78,17 +88,31 @@ const Nav = () => {
           </a>
         </div>
         <div className="navbar-end">
-          <Link href="/profile" className="hidden lg:block ">
-            <Button variant="ghost">
-              <Person></Person> Profile
-            </Button>
-          </Link>
-          <Link href="/login">
-            <Button variant="ghost">Login</Button>
-          </Link>
-          <Link href="/signup">
-            <Button variant="ghost">Sign up</Button>
-          </Link>
+          {user ? (
+            <>
+              <Avatar>
+                <Avatar.Image alt="John Doe" src={user?.image} />
+                <Avatar.Fallback>JD</Avatar.Fallback>
+              </Avatar>
+              <Link href="/profile" className="hidden lg:block ">
+                <Button variant="ghost">
+                  <Person></Person> Profile
+                </Button>
+              </Link>
+              <Button variant="outline" onClick={handleLogOut}>
+                Logout
+              </Button>
+            </>
+          ) : (
+            <>
+              <Link href="/login">
+                <Button variant="ghost">Login</Button>
+              </Link>
+              <Link href="/signup">
+                <Button variant="ghost">Sign up</Button>
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </div>
