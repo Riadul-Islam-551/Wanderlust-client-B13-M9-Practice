@@ -3,7 +3,9 @@
 import { authClient } from "@/lib/auth-client";
 import { ArrowRight, Check } from "@gravity-ui/icons";
 import { Button } from "@heroui/react";
+import { json } from "better-auth";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import React from "react";
 
 const BookingCard = ({ detailsData }) => {
@@ -23,7 +25,7 @@ const BookingCard = ({ detailsData }) => {
     Category,
   } = detailsData;
 
-  const handleBooking = () => {
+  const handleBooking = async () => {
     const bookingData = {
       userId: user?.id,
       userName: user?.name,
@@ -39,6 +41,21 @@ const BookingCard = ({ detailsData }) => {
     };
 
     console.log(bookingData);
+
+    const res = await fetch("http://localhost:5000/bookings", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(bookingData),
+    });
+
+    const data = await res.json();
+    if (data.insertedId) {
+      redirect("/myBookings");
+    }
+
+    console.log(data.insertedId);
   };
 
   return (
