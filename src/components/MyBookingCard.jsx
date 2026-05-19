@@ -2,9 +2,10 @@ import { Eye, TrashBin } from "@gravity-ui/icons";
 import { Button } from "@heroui/react";
 import Image from "next/image";
 import React from "react";
+import { DeleteBooking } from "./DeleteBooking";
 
 const MyBookingCard = ({ data }) => {
-  console.log(data);
+  //   console.log(data);
   const {
     _id,
     userName,
@@ -62,17 +63,8 @@ const MyBookingCard = ({ data }) => {
         {/* Action Buttons */}
         <div className="flex items-center gap-4 self-end md:self-center">
           {/* Cancel Button */}
-          <Button
-            variant="outline"
-            className=" border-red-400 text-red-500 rounded "
-          >
-            <TrashBin></TrashBin> Cancel
-          </Button>
+          <DeleteBooking bookingId = {_id}></DeleteBooking>
 
-          {/* View Button */}
-          <Button variant="ghost" className="text-white bg-cyan-500 rounded ">
-            <Eye></Eye> View
-          </Button>
         </div>
       </div>
     </div>
