@@ -25,9 +25,9 @@ const BookingCard = ({ detailsData }) => {
 
   const handleBooking = () => {
     const bookingData = {
-      userId: user.id,
-      userName: user.name,
-      userImage: user.image,
+      userId: user?.id,
+      userName: user?.name,
+      userImage: user?.image,
       destinationId: _id,
       price: Price,
       imageUrl: ImageURL,
