@@ -11,6 +11,8 @@ import {
   TextField,
 } from "@heroui/react";
 import { redirect } from "next/navigation";
+import { Icon } from "@iconify/react";
+import Link from "next/link";
 
 const SignupPage = () => {
   const handleSubmit = async (e) => {
@@ -38,6 +40,12 @@ const SignupPage = () => {
     // console.log(user);
   };
 
+  const handleGoogleSignin = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+    });
+  };
+
   return (
     <div className="py-9 px-2">
       <h1 className="font-bold text-2xl md:text-3xl lg:text-4xl text-center mb-2">
@@ -46,7 +54,7 @@ const SignupPage = () => {
       <p className="text-gray-600 text-center text-sm mb-5 ">
         Start your adventure with Wanderlust
       </p>
-      <div className="max-w-2xl mx-auto">
+      <div className="card border  border-gray-200 max-w-2xl mx-auto">
         <Form className="flex flex-col gap-4" onSubmit={handleSubmit}>
           {/* name */}
           <TextField isRequired name="name" type="text">
@@ -109,6 +117,21 @@ const SignupPage = () => {
             </Button>
           </div>
         </Form>
+        <div className="text-center">or sign in with</div>
+        <Button
+          onClick={handleGoogleSignin}
+          className="w-full rounded "
+          variant="tertiary"
+        >
+          <Icon icon="devicon:google" />
+          Sign in with Google
+        </Button>
+        <p className="mt-3 text-center text-xs ">
+          Have any account?
+          <Link href={"/login"} className=" text-cyan-500">
+            Login
+          </Link>
+        </p>
       </div>
     </div>
   );
