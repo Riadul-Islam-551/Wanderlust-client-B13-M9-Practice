@@ -37,14 +37,17 @@ export function EditDestination({ detailsData }) {
     const { data: tokenData } = await authClient.token();
     console.log(tokenData);
 
-    const res = await fetch(`http://localhost:5000/destinations/${_id}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${tokenData?.token}`,
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/destinations/${_id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${tokenData?.token}`,
+        },
+        body: JSON.stringify(editedData),
       },
-      body: JSON.stringify(editedData),
-    });
+    );
 
     const data = await res.json();
     alert("Updated Destination successfully");

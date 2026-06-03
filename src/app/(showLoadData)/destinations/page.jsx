@@ -2,7 +2,7 @@ import DestinationCard from "@/components/DestinationCard";
 import React from "react";
 
 const AllDestinationPage = async () => {
-  const res = await fetch("http://localhost:5000/destinations");
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destinations`);
   const destinationsData = await res.json();
 
 //   console.log(destinationsData);
