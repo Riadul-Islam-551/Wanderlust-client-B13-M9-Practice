@@ -1,5 +1,6 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
 import {
   Button,
@@ -21,10 +22,14 @@ const AddDestinationPage = () => {
     const destinationData = Object.fromEntries(formData.entries());
     // console.log(destinationData);
 
+    const { data: tokenData } = await authClient.token();
+    console.log(tokenData);
+
     const res = await fetch("http://localhost:5000/destinations", {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        authorization: `Bearer ${tokenData?.token}`,
       },
       body: JSON.stringify(destinationData),
     });

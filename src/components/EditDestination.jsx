@@ -1,6 +1,7 @@
 "use client";
 
-import { Check, Envelope, Pencil } from "@gravity-ui/icons";
+import { authClient } from "@/lib/auth-client";
+import { Pencil } from "@gravity-ui/icons";
 import {
   Button,
   FieldError,
@@ -33,11 +34,14 @@ export function EditDestination({ detailsData }) {
     const formData = new FormData(e.currentTarget);
     const editedData = Object.fromEntries(formData.entries());
     // console.log(editedData);
+    const { data: tokenData } = await authClient.token();
+    console.log(tokenData);
 
     const res = await fetch(`http://localhost:5000/destinations/${_id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
+        authorization: `Bearer ${tokenData?.token}`,
       },
       body: JSON.stringify(editedData),
     });

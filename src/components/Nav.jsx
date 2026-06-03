@@ -14,6 +14,7 @@ const Nav = () => {
   // console.log(session);
   const handleLogOut = async () => {
     await authClient.signOut();
+    window.location.reload();
   };
 
   const links = (

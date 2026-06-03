@@ -14,11 +14,23 @@ import Image from "next/image";
 import { EditDestination } from "@/components/EditDestination";
 import { DeleteDestination } from "@/components/DeleteDestination";
 import BookingCard from "@/components/BookingCard";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
 const DestinationDetails = async ({ params }) => {
   const { id } = await params;
   //   console.log(id);
-  const res = await fetch(`http://localhost:5000/destinations/${id}`);
+
+  // get the token
+  const { token } = await auth.api.getToken({
+    headers: await headers(),
+  });
+  console.log(token);
+  const res = await fetch(`http://localhost:5000/destinations/${id}`, {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
   const detailsData = await res.json();
   //   console.log(detailsData);
 
@@ -82,7 +94,14 @@ const DestinationDetails = async ({ params }) => {
         </div>
       </div>
       <div className="py-9 ">
-        <Link href={'/myBookings'}><Button variant="outline" className={'w-full text-cyan-500 border-cyan-500 rounded '}>Show Your Booking Destinations</Button></Link>
+        <Link href={"/myBookings"}>
+          <Button
+            variant="outline"
+            className={"w-full text-cyan-500 border-cyan-500 rounded "}
+          >
+            Show Your Booking Destinations
+          </Button>
+        </Link>
       </div>
     </div>
   );
