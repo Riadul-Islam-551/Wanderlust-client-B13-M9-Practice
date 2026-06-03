@@ -23,16 +23,17 @@ const LoginPage = () => {
       password: user.password,
     });
 
-    
     if (data) {
       redirect("/");
+      window.location.reload();
+      
     }
 
     if (error) {
       alert("something went wrong");
     }
 
-    // console.log({ data, error }); 
+    // console.log({ data, error });
 
     // console.log(user);
   };

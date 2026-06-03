@@ -89,9 +89,7 @@ const Nav = () => {
         </div>
 
         <div className="navbar-end">
-          {session == undefined ? (
-            <Spinner></Spinner>
-          ) : user ? (
+          {user ? (
             <>
               <Avatar>
                 <Avatar.Image alt="John Doe" src={user?.image} />
