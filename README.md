@@ -1,5 +1,7 @@
 # Wanderlust - The Ultimate Travel Destination for Travellers 
 
+[Live site](https://wonderlust-client-two.vercel.app)
+
 Wanderlust is a travel destination booking dashboard built with the Next.js App Router, Node.js, Express.js and Mongodb. It offers authenticated user flows, destination management, booking tracking, and a responsive UI powered by Tailwind CSS and DaisyUI.
 
 ## Project Overview
