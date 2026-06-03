@@ -1,36 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Wanderlust
+
+Wanderlust is a travel booking dashboard built with the Next.js App Router. It offers authenticated user flows, destination management, booking tracking, and a responsive UI powered by Tailwind CSS and DaisyUI.
+
+## Project Overview
+
+This repository contains a full-stack Next.js application that connects to a backend API and uses Better Auth for user authentication.
+
+Core capabilities:
+- Email/password and social login via Better Auth
+- Destination listing with dedicated detail pages
+- Add, edit, and delete destination management
+- Booking creation and personal booking overview
+- Protected routes for profile, bookings, and destination management
+- MongoDB persistence for authentication and session data
+
+## Technologies
+
+- Next.js 16.2.6 (App Router)
+- React 19.2.4
+- Tailwind CSS 4
+- DaisyUI
+- Better Auth (`better-auth`, `@better-auth/mongo-adapter`)
+- MongoDB (`mongodb`)
+- HeroUI (`@heroui/react`, `@heroui/styles`)
+- Iconify (`@iconify/react`)
+- Gravity UI Icons (`@gravity-ui/icons`)
+
+## Key Features
+
+- Authentication with email/password and Google provider
+- Backend auth route under `src/app/api/auth/[...all]/route.js`
+- Server-side authorization using JWT tokens
+- Destination card listings and detailed destination views
+- Booking creation, cancellation, and personal bookings page
+- Add destination form with protected access
+- Dynamic routes for destination details and editing
+- Custom navigation, hero section, footer, and reusable UI components
 
 ## Getting Started
 
-First, run the development server:
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Run in development
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000` in your browser.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Build for production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+### Start production server
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Run static analysis
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run lint
+```
 
-## Deploy on Vercel
+## Environment Variables
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Create a `.env.local` file with the following values:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```env
+MONGO_URI=your_mongodb_connection_string
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+BETTER_AUTH_URL=http://localhost:3000/api/auth
+NEXT_PUBLIC_SERVER_URL=http://localhost:5000
+```
+
+> Adjust `NEXT_PUBLIC_SERVER_URL` to match the backend API URL used by destination and booking endpoints.
+
+## Recommended Project Structure
+
+- `src/app/` - main Next.js application routes and layouts
+- `src/components/` - reusable UI and feature components
+- `src/lib/auth.js` - backend Better Auth configuration
+- `src/lib/auth-client.js` - frontend auth client setup
+- `src/proxy.js` - server-side proxy for protected page routes
+- `src/public/assets/destinations/` - destination images and static assets
+
+## Notes
+
+- This project uses remote image loading via `next.config.mjs`.
+- Auth state is managed through Better Auth and JWT session cookies.
+- The app relies on external API endpoints for destinations and bookings, so ensure `NEXT_PUBLIC_SERVER_URL` points to a valid backend.
+
+## License
+
+This project is private and currently does not include an open-source license.
