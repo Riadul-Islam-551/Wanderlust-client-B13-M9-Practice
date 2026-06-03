@@ -1,6 +1,6 @@
-# Wanderlust
+# Wanderlust - The Ultimate Travel Destination for Travellers 
 
-Wanderlust is a travel booking dashboard built with the Next.js App Router. It offers authenticated user flows, destination management, booking tracking, and a responsive UI powered by Tailwind CSS and DaisyUI.
+Wanderlust is a travel destination booking dashboard built with the Next.js App Router, Node.js, Express.js and Mongodb. It offers authenticated user flows, destination management, booking tracking, and a responsive UI powered by Tailwind CSS and DaisyUI.
 
 ## Project Overview
 
