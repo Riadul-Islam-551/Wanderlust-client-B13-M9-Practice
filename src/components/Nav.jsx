@@ -81,7 +81,7 @@ const Nav = () => {
         <div className="navbar-center">
           <Link href="/">
             <Image
-              src={"/assets/wanderlast.png"}
+              src={"/assets/Wanderlast.png"}
               alt="wander last"
               width={100}
               height={14}
